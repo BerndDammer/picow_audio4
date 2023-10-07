@@ -55,6 +55,8 @@ add_executable(usb_audio4
 	src/task_console.c
 	src/task_network.c
 	src/task_tud.c
+	src/usb_descriptors.c
+	src/board_usb_get_serial.c
 )
 
 
