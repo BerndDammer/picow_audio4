@@ -104,10 +104,16 @@
 
 #if FREE_RTOS_KERNEL_SMP // set by the RP2040 SMP port of FreeRTOS
 /* SMP port only */
-#define configNUM_CORES                         2
+//// WORKAROUND new version of freertos problem
+//#define configNUM_CORES                         2
+#define configNUM_CORES                         1
 #define configTICK_CORE                         0
 #define configRUN_MULTIPLE_PRIORITIES           1
-#define configUSE_CORE_AFFINITY                 1
+//#define configUSE_CORE_AFFINITY                 1
+#define configUSE_CORE_AFFINITY                 0
+
+// #error is this included QQQQ  --- yes it is
+
 #endif
 
 /* RP2040 specific */

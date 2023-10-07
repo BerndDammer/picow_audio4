@@ -7,7 +7,6 @@
 #include "task_prio.h"
 
 #include "global_signal.h"
-#include "can.h"
 #include "panic.h"
 #include "parameter.h"
 
@@ -25,15 +24,6 @@ static TaskHandle_t network_taskhandle;
 void recCallBack(void *vp, struct udp_pcb *pcb, struct pbuf *p,
 		const ip_addr_t *addr, u16_t port)
 {
-	// is ok for FreeRTOS function
-	// or from ISR ????
-	MainEnvironement_t *MainEnvironement = (MainEnvironement_t*) vp;
-	if (p->len == sizeof(can_msg_t))
-	{
-		xQueueSend(MainEnvironement->from_host, p->payload, XDELAY);
-		// should return immediately
-	}
-	else
 	{
 		printf("\np ->len %i", p->len);
 	}
@@ -77,26 +67,7 @@ void network_thread(MainEnvironement_t *MainEnvironement)
 
 	while (true)
 	{
-		can_msg_t msg;
-		BaseType_t result;
-
-		// TODO: what triggers a package send ????
-		result = xQueueReceive(MainEnvironement->to_host, &msg, XDELAY);
-
-		if (result == pdPASS)
-		{
-			struct pbuf *p;
-			p = pbuf_alloc(PBUF_TRANSPORT, sizeof(can_msg_t), PBUF_RAM);
-			memcpy(p->payload, &msg, sizeof(can_msg_t));
-
-			udp_sendto(broadcast_receive_socket, p, &broadcast_destination,
-			UDP_PORT_TRANS); //send a multicast packet
-			pbuf_free(p);
-		}
-		else
-		{
-			puts("You should not be here");
-		}
+		// Yield ?????
 	}
 }
 

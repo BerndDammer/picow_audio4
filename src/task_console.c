@@ -31,7 +31,7 @@ static void console_menu()
 {
 	printf("\n\n");
 	printf("------------------------------------\n");
-	printf("LWIP and UDP Multicast Test\n");
+	printf("AUDIO Test\n");
 	printf("a Show netif data\n");
 	printf("h Show hostname data\n");
 	printf("x hardware address\n");

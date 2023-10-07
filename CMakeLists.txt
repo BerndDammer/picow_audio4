@@ -24,6 +24,10 @@ endif()
 
 # ///////////////////////////////////////////////////// freertos
 
+### # // WORKAROUND: Why must be set now and not before
+### set(FREE_RTOS_KERNEL_SMP 1)
+
+
 set(FREERTOS_KERNEL_PATH ${CMAKE_CURRENT_LIST_DIR}/freertos)
 include(FreeRTOS_Kernel_import.cmake)
 
@@ -38,7 +42,6 @@ pico_sdk_init()
 # Add executable. Default name is the project name, version 0.2.1
 
 
-
 #target_include_directories(usb_audio4 PRIVATE src )
 #target_include_directories(usb_audio4 ${CMAKE_CURRENT_LIST_DIR}/src )
 
@@ -51,12 +54,7 @@ add_executable(usb_audio4
 	src/task_blinker.c
 	src/task_console.c
 	src/task_network.c
-	src/task_heartbeat.c
-	src/task_demux.c
-	src/task_drive.c
-	src/task_lights.c
-	src/hardware_drive.c
-	src/hardware_lights.c
+	src/task_tud.c
 )
 
 
@@ -69,7 +67,7 @@ target_include_directories(usb_audio4 PRIVATE
 target_compile_definitions(usb_audio4 PRIVATE NO_SYS=0 )
 
 pico_set_program_name(usb_audio4 "usb_audio4")
-pico_set_program_version(usb_audio4 "0.2.1")
+pico_set_program_version(usb_audio4 "0.0.2")
 
 pico_enable_stdio_uart(usb_audio4 1)
 pico_enable_stdio_usb(usb_audio4 0)

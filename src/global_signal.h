@@ -24,11 +24,6 @@
 typedef struct
 {
 	EventGroupHandle_t mainEventGroup;
-	QueueHandle_t from_host;
-	QueueHandle_t to_host;
-	QueueHandle_t to_drive;
-	QueueHandle_t to_lights;
-	QueueHandle_t to_heartbeat;
 }MainEnvironement_t;
 
 typedef void (*CALLEE)(void *);
