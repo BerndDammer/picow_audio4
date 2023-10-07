@@ -15,18 +15,16 @@
 
 static TaskHandle_t tud_taskhandle;
 
-void tud_thread(MainEnvironement_t *MainEnvironement)
-{
+void tud_thread(MainEnvironement_t *MainEnvironement) {
 	tusb_init();
 
-	while (true)
-	{
+	while (true) {
 		tud_task();
+		vTaskDelay(1); // let it yield
 	}
 }
 
-void task_tud_init(MainEnvironement_t *MainEnvironement)
-{
+void task_tud_init(MainEnvironement_t *MainEnvironement) {
 	xTaskCreate((CALLEE) tud_thread, "TUD", configMINIMAL_STACK_SIZE,
 			MainEnvironement, TUD_TASK_PRIO, &tud_taskhandle);
 }
