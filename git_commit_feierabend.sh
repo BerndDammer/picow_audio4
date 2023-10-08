@@ -1,5 +1,5 @@
 git add .
-git commit -m "compile link with device descriptors"
+git commit -m "disassembly with c source"
 git push
 git push --tags
 read
