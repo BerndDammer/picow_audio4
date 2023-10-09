@@ -57,6 +57,7 @@ add_executable(usb_audio4
 	src/task_tud.c
 	src/usb_descriptors.c
 	src/board_usb_get_serial.c
+	src/usb_device_cdc.c
 )
 
 

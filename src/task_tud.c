@@ -13,6 +13,9 @@
 
 #include "tusb.h"
 
+// XXX : need this QQQQQQ
+#include "bsp/board.h"
+
 static TaskHandle_t tud_taskhandle;
 
 void tud_thread(MainEnvironement_t *MainEnvironement) {
