@@ -1,5 +1,5 @@
 git add .
-git commit -m "disassembly with c source"
+git commit -m "dual channel error"
 git push
 git push --tags
 read

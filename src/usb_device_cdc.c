@@ -22,7 +22,7 @@ void tud_cdc_rx_cb(uint8_t itf)
 	uint8_t buf[64];
 	uint32_t count;
 
-	if (tud_cdc_available()) // data is available
+	if (tud_cdc_n_available(itf)) // data is available
 	{
 		count = tud_cdc_n_read(itf, buf, sizeof(buf));
 
