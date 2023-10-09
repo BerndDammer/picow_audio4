@@ -1,11 +1,13 @@
 /*
  * usb_device_cdc.c
  *
+ *  callbacks 4 cdc
+ *
+ *
  *  Created on: 09.10.2023
- *      Author: manni21
  */
 
-// callbacks 4 cdc
+
 #include "tusb.h"
 
 // This include shows the necessary callbacks
@@ -22,7 +24,7 @@ void tud_cdc_rx_cb(uint8_t itf)
 	uint8_t buf[64];
 	uint32_t count;
 
-	if (tud_cdc_n_available(itf)) // data is available
+	if (tud_cdc_n_available(itf) > 0) // data is available
 	{
 		count = tud_cdc_n_read(itf, buf, sizeof(buf));
 
