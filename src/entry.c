@@ -24,12 +24,13 @@ int gg(void)
 
 int main(void)
 {
-	printf("\nAt main entry %i", gg()); // no output !!!!
+	printf("\nAt main entry %i\n", gg()); // no output !!!!
 
 	stdio_init_all();
 
-	printf("\nAfter init stdio %i", gg());
+	printf("\nAfter init stdio %i\n", gg());
 
+	MainEnvironement.mainEventGroup = xEventGroupCreate();
 
 	blinker_init(&MainEnvironement);
 	console_init(&MainEnvironement);

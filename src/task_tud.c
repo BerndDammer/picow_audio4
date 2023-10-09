@@ -16,6 +16,7 @@
 static TaskHandle_t tud_taskhandle;
 
 void tud_thread(MainEnvironement_t *MainEnvironement) {
+	// board_init();
 	tusb_init();
 
 	while (true) {

@@ -68,6 +68,7 @@ void network_thread(MainEnvironement_t *MainEnvironement)
 	while (true)
 	{
 		// Yield ?????
+		vTaskDelay(1); // let it yield
 	}
 }
 

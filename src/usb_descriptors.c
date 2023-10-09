@@ -70,6 +70,7 @@ tusb_desc_device_t const desc_device =
 // Application return pointer to descriptor
 uint8_t const * tud_descriptor_device_cb(void)
 {
+	printf("tud_descriptor_device_cb\n");
   return (uint8_t const *) &desc_device;
 }
 
@@ -200,6 +201,7 @@ uint8_t const* tud_descriptor_other_speed_configuration_cb(uint8_t index)
 // Descriptor contents must exist long enough for transfer to complete
 uint8_t const * tud_descriptor_configuration_cb(uint8_t index)
 {
+	printf("tud_descriptor_configuration_cb\n");
   (void) index; // for multiple configurations
 
 #if TUD_OPT_HIGH_SPEED
@@ -231,6 +233,9 @@ char const *string_desc_arr[] =
   NULL,                          // 3: Serials will use unique ID if possible
   "TinyUSB CDC",                 // 4: CDC Interface
 };
+
+
+#include "board_usb_get_serial.h"
 
 static uint16_t _desc_str[32 + 1];
 
