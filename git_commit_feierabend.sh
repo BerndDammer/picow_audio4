@@ -1,5 +1,5 @@
 git add .
-git commit -m "runs if wlan not crashed"
+git commit -m "mod comment"
 git push
 git push --tags
 read
